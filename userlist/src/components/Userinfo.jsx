@@ -15,7 +15,7 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
   useEffect(() => {
     setActivestatus(status);
     setAccessstatus(access);
-  }, [id]);
+  }, [id,userlist]);
 
   useEffect(() => {
     setSelectedId(id);
@@ -32,7 +32,7 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
   };
 
   return (
-    <div className="p-1 m-1 bg-slate-50 rounded-md grid lg:grid-cols-[300px_150px_150px_40px] grid-cols-[200px_100px_100px_20px] items-center gap-4">
+    <div className="w-fit p-1 m-1 bg-slate-50 rounded-md grid lg:grid-cols-[300px_150px_150px_40px] grid-cols-[200px_100px_100px_20px] items-center gap-4">
       <div
         className="flex gap-4"
         onMouseEnter={handleMouseEnter}
@@ -46,10 +46,9 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
       </div>
       <div>
         <select
-          key={id}
           value={activestatus}
           onChange={(e) => setActivestatus(e.target.value)}
-          className="lg:py-2 py-1 m-2 lg:m-0 lg:px-5 px-2 bg-blue-50 w-fit rounded ring-1 font-normal outline-none cursor-pointer focus:ring-offset-2"
+          className="lg:py-2 py-1 m-2 lg:m-0 lg:px-5 px-2 bg-blue-50 w-fit rounded border border-blue-200 font-normal outline-none cursor-pointer"
         >
           <option value={activestatus}>{activestatus}</option>
           <option value={activestatus === `Active` ? `Inactive` : `Active`}>
@@ -59,10 +58,9 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
       </div>
       <div>
         <select
-          key={id}
           value={accessStatus}
           onChange={(e) => setAccessstatus(e.target.value)}
-          className="lg:py-2 py-1 lg:px-5 lg:m-0 px-1 m-2 bg-blue-50 w-fit rounded ring-1 font-normal outline-none cursor-pointer focus:ring-offset-2"
+          className="lg:py-2 py-1 lg:px-5 lg:m-0 px-1 m-2 bg-blue-50 w-fit rounded border border-blue-200 font-normal outline-none cursor-pointer"
         >
           <option value={accessStatus}>{accessStatus}</option>
           <option value={accessStatus === `Manager` ? `Employee` : `Manager`}>
@@ -72,7 +70,7 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
       </div>
       <div>
         <button
-          className="p-1 rounded ring hover:ring-offset-1"
+          className="p-1 rounded"
           onClick={handleDelete}
         >
           <img src={TrashBtn} alt="Delete User" className="lg:h-6 h-3" />

@@ -14,7 +14,7 @@ function Usercard() {
   }, [usercard]);
 
   return (
-    <div className="bg-slate-100 z-10 p-8 w-64 mt-4 h-80 rounded-lg flex flex-col gap-2 items-center justify-center">
+    <div className="bg-slate-100 z-10 p-8 w-64 mt-4 h-80 rounded-3xl flex flex-col gap-2 items-center justify-center shadow-lg">
       <img src={avatar} alt="avatar" className="h-16 w-16 rounded-full" />
       <span className="text-md font-semibol">
         {first_name + ` ` + last_name}
@@ -26,7 +26,7 @@ function Usercard() {
       <button
         className={`${
           status === `Active` ? "bg-green-600" : "bg-amber-400"
-        } rounded py-2 w-full`}
+        } rounded py-2 w-full shadow-md`}
       >
         {status}
       </button>
