@@ -23,14 +23,13 @@ export const userdetails = (state = initialstate, action) => {
         if (item.id === action.id) {
           return {
             ...item,
-            status: action.status === "Active" ? "Active" : "Inactive",
-            access: action.access === "Manager" ? "Manager" : "Employee",
+            status: action.status,
+            access: action.access,
           };
         } else {
           return item;
         }
       });
-
       return {
         ...state,
         userdata: updateddata,
@@ -49,7 +48,6 @@ export const userdetails = (state = initialstate, action) => {
 
     case `SHOW_CARD`: {
       const data = [...state.userdata];
-      console.log(data[action.index]);
       let updatedcarddata = data[action.index];
 
       return {

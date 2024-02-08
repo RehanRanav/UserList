@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Usercard() {
   const usercard = useSelector((state) => state.usercarddata);
-  console.log(usercard);
   const { avatar, first_name, last_name, email, id, status } = usercard || {};
   const [randomvalue, setRandomvalue] = useState(1);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     let random = Math.floor(Math.random() * 200) + 1;

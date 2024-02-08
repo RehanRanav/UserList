@@ -15,12 +15,11 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
   useEffect(() => {
     setActivestatus(status);
     setAccessstatus(access);
-  }, [id,userlist]);
+  }, [id, userlist]);
 
   useEffect(() => {
-    setSelectedId(id);
     dispatch(UPDATE_DATA(selectedId, activestatus, accessStatus));
-  }, [activestatus, accessStatus]);
+  }, [selectedId, activestatus, accessStatus]);
 
   const handleDelete = () => {
     dispatch(DELETE_DATA(index));
@@ -47,7 +46,7 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
       <div>
         <select
           value={activestatus}
-          onChange={(e) => setActivestatus(e.target.value)}
+          onChange={(e) => {setActivestatus(e.target.value); setSelectedId(id);}}
           className="lg:py-2 py-1 m-2 lg:m-0 lg:px-5 px-2 bg-blue-50 w-fit rounded border border-blue-200 font-normal outline-none cursor-pointer"
         >
           <option value={activestatus}>{activestatus}</option>
@@ -59,7 +58,7 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
       <div>
         <select
           value={accessStatus}
-          onChange={(e) => setAccessstatus(e.target.value)}
+          onChange={(e) => {setAccessstatus(e.target.value); setSelectedId(id);}}
           className="lg:py-2 py-1 lg:px-5 lg:m-0 px-1 m-2 bg-blue-50 w-fit rounded border border-blue-200 font-normal outline-none cursor-pointer"
         >
           <option value={accessStatus}>{accessStatus}</option>
@@ -69,10 +68,7 @@ function Userinfo({ index, mouseEnter, mouseLeave }) {
         </select>
       </div>
       <div>
-        <button
-          className="p-1 rounded"
-          onClick={handleDelete}
-        >
+        <button className="p-1 rounded" onClick={handleDelete}>
           <img src={TrashBtn} alt="Delete User" className="lg:h-6 h-3" />
         </button>
       </div>
